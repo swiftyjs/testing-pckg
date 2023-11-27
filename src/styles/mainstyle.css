@@ -1,0 +1,19 @@
+@font-face {
+    font-family: Montserrat;
+    src: url(../fonts/Montserrat-Regular.ttf);
+}
+
+@font-face {
+    font-family: Nunito;
+    src: url(../fonts/Nunito-ExtraBold.ttf);
+}
+
+html, body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    background: linear-gradient(135deg, #0B0C0E 0%, #202327 100%);
+}
