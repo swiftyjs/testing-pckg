@@ -41,4 +41,23 @@ By now, you might be getting the hang of how **Swifty.js** does its magic!
 
 Ready for some creativity? Create a new component! Let's call it **mycomponent.html**. Fill it with your awesome content. Make sure it is located at **src/library**.
 
-Now, head over to **src/pages/index.html**. Replace the existing **`<component1>`** element with your new **`<mycomponent>`**. Save the changes and refresh the *Swifty.js App* tab to see your creation live!
+Now, head over to **src/pages/index.html**. Replace the existing **`<component1>`** element with your new **`<mycomponent>`**. Your **index.html** code should look like this:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swifty.js App</title>
+    <link rel="stylesheet" href="../styles/mainstyle.css">
+</head>
+
+<body>
+    <mycomponent></mycomponent>
+</body>
+
+</html>
+```
+
+**Save the changes and refresh the *Swifty.js App* tab to see your creation live!**
