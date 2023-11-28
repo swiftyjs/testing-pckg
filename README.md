@@ -13,7 +13,7 @@ npm start
 
 Then head to http://localhost:3000/ on a web browser. You should see a screen like this:
 
-![image](https://github.com/swiftyjs/testing-pckg/assets/115911859/3da5473e-2b69-4366-a178-9006cbdea2f4)
+![image](https://github.com/swiftyjs/testing-pckg/assets/115911859/c70e06df-0039-4bd3-970e-885bd3d1b2a0)
 
 Now, if you compare the original static **src/pages/index.html** code with the code in the *Swifty.js App* tab under the **index page**, you will notice that the **<component1>** element has been replaced with the code from the **component1.html** component.
 
