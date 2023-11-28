@@ -37,7 +37,7 @@ Give it a shot! Edit the **component1.html** component in the library, then hop 
 
 By now, you might be getting the hang of how **Swifty.js** does its magic!
 
-# Create a New Component
+## Create a New Component
 
 Ready for some creativity? Create a new component! Let's call it **mycomponent.html**. Fill it with your awesome content. Make sure it is located at **src/library**.
 
