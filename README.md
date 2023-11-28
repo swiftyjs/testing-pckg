@@ -15,7 +15,7 @@ Then head to http://localhost:3000/ on a web browser. You should see a screen li
 
 ![image](https://github.com/swiftyjs/testing-pckg/assets/115911859/c70e06df-0039-4bd3-970e-885bd3d1b2a0)
 
-Now, if you compare the original static **src/pages/index.html** code with the code in the *Swifty.js App* tab under the **index page**, you will notice that the **<component1>** element has been replaced with the code from the **component1.html** component.
+Now, if you compare the original static **src/pages/index.html** code with the code in the *Swifty.js App* tab under the **index page**, you will notice that the **`<component1>`** element has been replaced with the code from the **component1.html** component.
 
 ![image](https://github.com/swiftyjs/testing-pckg/assets/115911859/bc12e6b5-65c3-4732-98ab-e6f45b6c1af8)
 
@@ -32,4 +32,4 @@ By now, you might be getting the hang of how **Swifty.js** does its magic!
 
 Ready for some creativity? Create a new component! Let's call it **mycomponent.html**. Fill it with your awesome content. Make sure it is located at **src/library**.
 
-Now, head over to **src/pages/index.html**. Replace the existing **<component1>** element with your new **<mycomponent>**. Save the changes and refresh the *Swifty.js App* tab to see your creation live!
+Now, head over to **src/pages/index.html**. Replace the existing **`<component1>`** element with your new **`<mycomponent>`**. Save the changes and refresh the *Swifty.js App* tab to see your creation live!
