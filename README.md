@@ -8,7 +8,16 @@ This testing package is a ready to use Swifty.js project directory.
 To start the Swifty.js testing server, run the following command in your terminal from the project directory:
 
 ```bash
-npm start
+$ npm start
+
+> start
+> node main.mjs
+
+Initializing Swifty.js server at port 3000 ...
+
+Swifty.js server is currently running at port 3000.
+
+Press Ctrl + C to stop running the server.
 ```
 
 Then head to http://localhost:3000/ on a web browser. You should see a screen like this:
