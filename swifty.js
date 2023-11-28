@@ -9,23 +9,17 @@ function createSwiftyTestServer() {
     console.log(`Initializing Swifty.js server at port ${PORT} ...`);
 
     setInterval(() => {
-      // Read the index.html file
-      const indexPath = 'src/pages/index.html'; // Adjusted path for the index.html file
+      const indexPath = 'src/pages/index.html';
       let indexContent = fs.readFileSync(indexPath, 'utf8');
 
-      // Regular expression to match HTML elements in the body
       const elementRegex = /<([a-zA-Z0-9_-]+)><\/\1>/g;
 
-      // Find all matches in the indexContent
       const matches = indexContent.match(elementRegex);
 
-      // Process each match
       if (matches) {
         matches.forEach((match) => {
-          // Extract the element name from the match
-          const elementName = match.match(/[a-zA-Z0-9_-]+/)[0].toLowerCase(); // Ensure the element name is lowercase
+          const elementName = match.match(/[a-zA-Z0-9_-]+/)[0].toLowerCase();
 
-          // Read the content of the corresponding HTML, CSS, JS, image, or other file
           let elementFilePath;
           switch (elementName) {
             case 'styles':
@@ -35,34 +29,34 @@ function createSwiftyTestServer() {
               elementFilePath = 'src/scripts/mainscript.js';
               break;
             case 'images':
-              elementFilePath = 'src/images/mainimage.jpg'; // Adjust the image file path as needed
+              elementFilePath = 'src/images/mainimage.jpg';
               break;
             case 'fonts':
-              elementFilePath = 'src/fonts/mainfont.woff'; // Adjust the font file path as needed
+              elementFilePath = 'src/fonts/mainfont.woff';
               break;
             case 'icons':
-              elementFilePath = 'src/icons/mainicon.svg'; // Adjust the icon file path as needed
+              elementFilePath = 'src/icons/mainicon.svg';
               break;
             case 'vendor':
-              elementFilePath = 'src/vendor/vendorLibrary.js'; // Adjust the vendor library file path as needed
+              elementFilePath = 'src/vendor/vendorLibrary.js';
               break;
             case 'data':
-              elementFilePath = 'src/data/data.json'; // Adjust the data file path as needed
+              elementFilePath = 'src/data/data.json';
               break;
             case 'config':
-              elementFilePath = 'src/config/config.json'; // Adjust the config file path as needed
+              elementFilePath = 'src/config/config.json';
               break;
             case 'audio':
-              elementFilePath = 'src/audio/mainaudio.mp3'; // Adjust the audio file path as needed
+              elementFilePath = 'src/audio/mainaudio.mp3';
               break;
             case 'video':
-              elementFilePath = 'src/video/mainvideo.mp4'; // Adjust the video file path as needed
+              elementFilePath = 'src/video/mainvideo.mp4';
               break;
             case 'documents':
-              elementFilePath = 'src/documents/maindocument.pdf'; // Adjust the document file path as needed
+              elementFilePath = 'src/documents/maindocument.pdf';
               break;
             case 'tests':
-              elementFilePath = 'src/tests/maintest.js'; // Adjust the test file path as needed
+              elementFilePath = 'src/tests/maintest.js';
               break;
             default:
               elementFilePath = `src/library/${elementName}.html`;
@@ -71,7 +65,6 @@ function createSwiftyTestServer() {
           try {
             const elementContent = fs.readFileSync(elementFilePath, 'utf8');
 
-            // Replace the match in indexContent with the content of the file
             indexContent = indexContent.replace(match, elementContent);
           } catch (error) {
             console.error(`Error reading file for element ${elementName}:`, error.message);
@@ -79,11 +72,9 @@ function createSwiftyTestServer() {
         });
       }
 
-      // Create an HTTP server
       const server = http.createServer((req, res) => {
-        const requestedPath = path.join(__dirname, 'src', req.url); // Adjusted path for requested files
+        const requestedPath = path.join(__dirname, 'src', req.url);
 
-        // Check if the requested path is for common asset directories
         if (
           req.url.startsWith('/styles') ||
           req.url.startsWith('/scripts') ||
@@ -106,44 +97,40 @@ function createSwiftyTestServer() {
             } else if (req.url.startsWith('/scripts')) {
               contentType = 'application/javascript';
             } else if (req.url.startsWith('/images')) {
-              contentType = 'image/jpeg'; // Adjust content type based on your image format
+              contentType = 'image/jpeg';
             } else if (req.url.startsWith('/fonts')) {
-              contentType = 'application/font-woff'; // Adjust content type based on your font format
+              contentType = 'application/font-woff';
             } else if (req.url.startsWith('/icons')) {
-              contentType = 'image/svg+xml'; // Adjust content type based on your icon format
+              contentType = 'image/svg+xml';
             } else if (req.url.startsWith('/vendor')) {
-              contentType = 'application/javascript'; // Adjust content type based on your vendor library format
+              contentType = 'application/javascript';
             } else if (req.url.startsWith('/data')) {
-              contentType = 'application/json'; // Adjust content type based on your data format
+              contentType = 'application/json';
             } else if (req.url.startsWith('/config')) {
-              contentType = 'application/json'; // Adjust content type based on your config format
+              contentType = 'application/json';
             } else if (req.url.startsWith('/audio')) {
-              contentType = 'audio/mpeg'; // Adjust content type based on your audio format
+              contentType = 'audio/mpeg';
             } else if (req.url.startsWith('/video')) {
-              contentType = 'video/mp4'; // Adjust content type based on your video format
+              contentType = 'video/mp4';
             } else if (req.url.startsWith('/documents')) {
-              contentType = 'application/pdf'; // Adjust content type based on your document format
+              contentType = 'application/pdf';
             } else if (req.url.startsWith('/tests')) {
-              contentType = 'application/javascript'; // Adjust content type based on your test file format
+              contentType = 'application/javascript';
             }
             res.setHeader('Content-Type', contentType);
             res.end(fileContent, 'binary');
             return;
           } catch (error) {
-            // File not found
             res.writeHead(404, { 'Content-Type': 'text/plain' });
             res.end('File not found');
           }
         } else {
-          // Set the Content-Type header to HTML for other files
           res.setHeader('Content-Type', 'text/html');
 
-          // Send the modified HTML as the response
           res.end(indexContent);
         }
       });
 
-      // Listen on port 3000 (you can change this to any port you prefer)
       server.listen(PORT);
 
       setTimeout(() => {
